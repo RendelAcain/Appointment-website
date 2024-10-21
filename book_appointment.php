@@ -1,22 +1,21 @@
 <?php
-$servername = "localhost"; // Your database host
-$username = "your_username"; // Your database username
-$password = "your_password"; // Your database password
-$dbname = "health_center"; // Your database name
+$servername = "localhost"; 
+$username = "your_username"; 
+$password = "your_password"; 
+$dbname = "health_center"; 
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+// para sa connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Prepare and bind
+// para magprepare at mabind
 $stmt = $conn->prepare("INSERT INTO appointments (name, email, appointment_date, appointment_time) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("ssss", $name, $email, $date, $time);
 
-// Get the values from the form
+// kuhanin ang values sa form
 $name = $_POST['name'];
 $email = $_POST['email'];
 $date = $_POST['date'];
